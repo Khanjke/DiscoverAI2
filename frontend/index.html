@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon"> <!-- Добавляем эту строку -->
+    <title>DiscoverAI</title>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">DISCOVERAI</a>
+        <ul>
+            <li><a href="#">Домашняя</a></li>
+            <li><a href="#about-section">О нас</a></li>
+            <li><a href="#">Контакты</a></li>
+            <li><a href="#">Войти</a></li>
+        </ul>
+    </header>
+
+    <section>
+        <img src="images/stars.png" id="stars">
+        <img src="images/moon.png" id="moon">
+        <img src="images/mountains_behind.png" id="mountains_behind">
+        <h2 id="text">DiscoverAI</h2>
+        <a href="#" id="btn">CheckAI</a>
+        <img src="images/mountains_front.png" id="mountains_front">
+    </section>
+
+    <div class="sec" id="about-section">
+        <h2>Добро пожаловать в DiscoverAI - ваш продвинутый классификатор изображений с использованием ИИ</h2><br>
+        <p>DiscoverAI - это передовая платформа, предназначенная для использования возможностей искусственного интеллекта для различения реальных изображений и изображений, созданных ИИ, с высокой точностью. Наши сложные алгоритмы ИИ обеспечивают беспрепятственный и интуитивно понятный опыт, позволяя пользователям легко загружать изображения и мгновенно получать обратную связь по их подлинности.</p>
+        
+        <br><p><strong>Особенности:</strong></p>
+        <ul>
+            <li><strong>Современные технологии ИИ:</strong> Используя передовые модели машинного обучения, DiscoverAI предлагает точную классификацию изображений для определения, были ли они созданы человеком или искусственным интеллектом.</li>
+            <li><strong>Удобный интерфейс:</strong> Наша платформа имеет стильный и современный дизайн, обеспечивая плавный пользовательский опыт. Функция перетаскивания позволяет пользователям легко загружать свои изображения.</li>
+            <li><strong>Анализ в реальном времени:</strong> Получайте мгновенные результаты с подробными вероятностями, дающие уверенность в подлинности ваших изображений.</li>
+            <li><strong>Безопасность и конфиденциальность:</strong> Мы приоритетно относимся к вашей конфиденциальности. Все изображения, обрабатываемые DiscoverAI, обрабатываются безопасно и не сохраняются после анализа.</li>
+            <li><strong>Адаптивный дизайн:</strong> Независимо от того, используете ли вы настольный компьютер, планшет или мобильное устройство, DiscoverAI обеспечивает стабильный и оптимизированный опыт на всех платформах.</li>
+        </ul><br>
+        
+        <p><strong>Как это работает:</strong></p>
+        <ul>
+            <li><strong>Загрузите свое изображение:</strong> Просто перетащите изображение в нашу область загрузки или нажмите, чтобы выбрать файл на своем устройстве.</li>
+            <li><strong>Анализ ИИ:</strong> Наши мощные модели ИИ анализируют изображение в реальном времени, чтобы определить, было ли оно создано ИИ или человеком.</li>
+            <li><strong>Получите результаты:</strong> Мгновенно увидьте результат классификации вместе с вероятностным показателем, указывающим на вероятность того, что изображение создано ИИ или реальное.</li>
+            <li><strong>Исследуйте дальше:</strong> Используйте нашу платформу для анализа множества изображений, легко обеспечивая подлинность ваших визуальных материалов.</li>
+        </ul><br>
+        
+        <p>DiscoverAI - это ваше идеальное решение для проверки подлинности изображений. Будь вы контент-creator, цифровой маркетолог или просто любопытный пользователь, DiscoverAI предоставляет вам инструменты для обеспечения подлинности ваших изображений.</p>
+    </div>
+
+    <!-- Модальное окно -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">            
+            <button class="close-btn">Close</button>
+            <div class="content-wrapper">
+                <div class="inner-content">
+                    <label for="category">Выберите категорию к которой подходит ваше изображение:</label>
+                    <select id="category" name="category">
+                        <option value="faces">Лица</option>
+                        <option value="landscapes">Пейзажи (Beta)</option>
+                        <option value="anime">Аниме (Beta)</option>
+                        <option value="drawings">Рисунки (Beta)</option>
+                        <option value="other">Другое (Beta)</option>
+                    </select>
+                    <div id="drop-zone" class="drop-zone">
+                        Перетащите файл сюда. <br><br>Мы поддерживаем jpeg, png, webp, gif, tiff, bmp. Максимальный размер файла 10Мб
+                    </div>
+                    <p>Или выберите:</p>
+                    <button id="file-button">Выбрать файл</button>
+                    <input type="file" id="file-input" style="display: none;">
+                </div>
+                <!-- Добавьте дополнительный контент справа, если необходимо -->
+                <div class="right-content">
+                    <div class="image-placeholder">
+                        <p>Загрузите картинку перед отображением</p>
+                    </div>
+                    <div class="image-results">
+                        <div class="Fakeornot">
+                            <div class="Fake hidden">
+                                <p>Likely AI generated</p>
+                            </div>
+                            <div class="UnFake hidden">
+                                <p>Likely Human</p>
+                            </div>
+                        </div>
+                        <div class="ScalesResults">
+                            <!-- Прогресс-бары -->
+                            <div class="progress-container">
+                                <div class="progress-bar">
+                                    <span class="progress-bar-fill ai" style="width: 0;"></span>
+                                </div>
+                                <p class="progress-label">AI Generated</p>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar">
+                                    <span class="progress-bar-fill human" style="width: 0;"></span>
+                                </div>
+                                <p class="progress-label">Human Created</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>           
+        </div>                
+    </div>
+
+    <script src="script.js"></script>    
+</body>
+</html>

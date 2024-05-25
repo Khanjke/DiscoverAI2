@@ -1,0 +1,664 @@
+*
+{
+    font-family: 'Century Gothic', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+body
+{
+    min-height: 100vh;
+    background:linear-gradient(#2b1055,#7597de);
+    overflow-x: hidden;
+}
+header
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10000;
+}
+header .logo
+{
+    color: #fff;
+    font-weight: 700;
+    text-decoration: solid;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+header ul
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header ul li
+{
+    list-style: none;
+    margin-left: 20px;
+}
+header ul li a
+{
+    text-decoration: none;
+    padding: 6px 15px;
+    color: #fff;
+    border-radius: 20px;
+}
+header ul li a:hover,
+header ul li a:active
+{
+    background:#fff;
+    color: #2b1055;
+}
+section
+{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    padding: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+section::before
+{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top,#1c0522,transparent);
+    z-index: 1000;
+}
+section img
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+section img#moon
+{
+    mix-blend-mode: screen;
+}
+section img#mountains_front
+{
+    z-index: 10;
+}
+#text
+{
+    position: absolute;
+    color: #fff;
+    white-space: nowrap;
+    font-size: 7.5vw;
+    z-index: 9;
+    right: -350px;
+}
+#btn 
+{
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 30px;
+    border-radius: 40px;
+    background:#fff;
+    color: #2b1055;
+    font-size: 1.5em;
+    z-index: 9;
+    transform: translateY(100px);
+}
+
+.sec
+{
+    position: relative;
+    padding: 100px;
+    background: #1c0522;
+}
+.sec h2
+{
+    font-size: 4em;
+    margin-bottom: 10px;
+    color: #fff;
+}
+.sec p
+{
+    font-size: 1em;
+    color: #fff;
+}
+li {
+    color: #fff; /* bullet color */
+    margin-left:50px;
+}
+li span {
+    color: #fff; /* text color */
+    margin-left:50px;
+}
+
+/* Стили для модального окна */
+.modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed; /* Оставаться на месте */
+    z-index: 1000; /* На переднем плане, значение z-index выше чем у других элементов */
+    left: 0;
+    top: 0;
+    width: 100%; /* Полная ширина */
+    height: 100%; /* Полная высота */
+    background-color: rgba(0, 0, 0, 0.856); /* Черный цвет с прозрачностью */
+    overflow: hidden; /* Скрыть переполнение */
+    opacity: 0; /* Начальная непрозрачность */
+    transition: opacity 0.5s ease; /* Анимация изменения непрозрачности */
+}
+
+/* Стиль для содержимого модального окна */
+.modal-content {
+    align-items: center;
+        justify-content: center;
+        background-image: linear-gradient(-45deg, rgb(100, 0, 158) 0%, rgb(124, 0, 196) 25%, rgb(162, 0, 255) 51%, rgb(65, 0, 185) 100%);
+        -webkit-animation: Animatemodal 5s ease infinite;
+                animation: Animatemodal 5s ease infinite;
+    margin: auto;
+    padding: 20px;
+    border: none;
+    width: 80%; /* Ширина */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.7); /* Начальная позиция и масштаб */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.651), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: transform 0.5s ease; /* Анимация */
+    border-radius: 10px; /* Закругление углов */
+    
+}
+
+@-webkit-keyframes Animatemodal {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  @keyframes Animatemodal {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+/* Когда модальное окно открыто, устанавливаем новые значения */
+.modal.show {
+    opacity: 1; /* Видимое состояние */
+}
+
+.modal.show .modal-content {
+    transform: translate(-50%, -50%) scale(1); /* Позиция по центру экрана и масштаб 1 */
+}
+
+/* Внутреннее содержимое модального окна */
+.content-wrapper {
+    display: flex;
+    width: 100%;    
+    
+}
+
+.inner-content {
+    background-color: #2d0061a1; /* Цвет фона */
+    margin: 20px; /* Отступы */
+    padding: 20px; /* Внутренние отступы */
+    border-radius: 10px; /* Закругление углов */
+    flex: 1; /* Занимает половину ширины модального окна */
+    color: rgb(209, 209, 209);
+    z-index: 3;
+    display: flex;
+    flex-direction: column; /* Располагаем элементы по вертикали */
+    align-items: center; /* Центрируем элементы по горизонтали */
+    justify-content: center; /* Центрируем элементы по вертикали */
+    text-align: center; /* Центрируем текст внутри элементов */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
+/* Стиль для кнопки закрытия */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    z-index: 4; /* Самый высокий z-index для кнопки закрытия */
+    cursor: pointer; /* Курсор указывает на кликабельность */
+    position: relative; /* Относительное позиционирование для z-index */
+}
+
+/* Стили для кнопки "Close" */
+.close-btn {
+    display: inline-block;
+    padding: 8px 30px;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    background-color: #ffffff; /* белый фон */
+    color: #000000; /* черный текст */
+    border: 2px solid transparent; /* прозрачная граница */
+    cursor: pointer;
+    transition: all 0.3s ease; /* плавный переход */
+    border-radius: 40px;
+    z-index: 4; /* Самый высокий z-index для кнопки закрытия */
+    position: relative; /* Относительное позиционирование для z-index */
+    margin-bottom: 15px; /* Отступ снизу кнопки */
+}
+
+.modal .close-btn {
+    position: absolute;
+    top: 25px;
+    right: -140px; /* Перемещаем за правую границу модального окна */
+    transform: translateY(-50%); /* Центрируем по вертикали */
+}
+
+
+.close-btn:hover {
+    background-color: transparent; /* прозрачный фон при наведении */
+    border-color: #ffffff; /* белая рамка при наведении */
+    color: #ffffff; /* белый текст при наведении */
+    z-index: 5;
+}
+
+
+.close:hover{
+    z-index: 10;
+}
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Стили для выпадающего списка */
+select {
+    background-color: white; /* Белый фон */
+    color: black; /* Черный цвет текста */
+    padding: 5px; /* Внутренние отступы */
+    border: 1px solid #ccc; /* Серая рамка */
+    border-radius: 5px; /* Закругление углов */
+    font-size: 16px; /* Размер шрифта */
+    margin-top: 10px; /* Отступ сверху */
+}
+
+
+
+.circles{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.circles li{
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    animation: animate 25s linear infinite;
+    bottom: -150px;
+    
+}
+
+.circles li:nth-child(1){
+    left: 25%;
+    width: 80px;
+    height: 80px;
+    animation-delay: 0s;
+}
+
+
+.circles li:nth-child(2){
+    left: 10%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 2s;
+    animation-duration: 12s;
+}
+
+.circles li:nth-child(3){
+    left: 70%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 4s;
+}
+
+.circles li:nth-child(4){
+    left: 40%;
+    width: 60px;
+    height: 60px;
+    animation-delay: 0s;
+    animation-duration: 18s;
+}
+
+.circles li:nth-child(5){
+    left: 65%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 0s;
+}
+
+.circles li:nth-child(6){
+    left: 75%;
+    width: 110px;
+    height: 110px;
+    animation-delay: 3s;
+}
+
+.circles li:nth-child(7){
+    left: 35%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 7s;
+}
+
+.circles li:nth-child(8){
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    animation-delay: 15s;
+    animation-duration: 45s;
+}
+
+.circles li:nth-child(9){
+    left: 20%;
+    width: 15px;
+    height: 15px;
+    animation-delay: 2s;
+    animation-duration: 35s;
+}
+
+.circles li:nth-child(10){
+    left: 85%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 0s;
+    animation-duration: 11s;
+}
+
+
+
+@keyframes animate {
+
+    0%{
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+    }
+
+    100%{
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+    }
+
+}
+
+
+
+.drop-zone {
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    padding: 40px; /* Увеличим отступы */
+    text-align: center;
+    color: #ccc;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    width: 100%; /* Установим ширину в 100% */
+    max-width: 500px; /* Максимальная ширина */
+    height: 200px; /* Установим высоту */
+    box-sizing: border-box; /* Включим отступы и границы в общие размеры */
+    transition: border-color 0.3s ease;
+}
+
+.drop-zone.dragover {
+    border-color: #f700ff;
+}
+
+
+#file-button {
+    margin-top: 10px;
+    /* убираем рамку */
+    border: none;
+    /* скругляем углы */
+    border-radius: 8px;
+    /* размер шрифта */
+    font-size: 16px;
+    /* шрифт и его цвет */
+    font-family: Arial, sans-serif;
+    color: #000000;
+    /* внутренние отступы */
+    padding: 8px 16px;
+    transition: background-color 0.3s ease; /* Добавляем плавный переход для цвета фона */
+}
+
+#file-button:hover {
+    background-color: #e2e2e2b0;
+}
+
+
+.right-content {
+    background-color: #1f0042b6; /* Цвет фона */
+    color: rgb(209, 209, 209);
+    margin: 20px; /* Отступы */
+    padding: 20px; /* Внутренние отступы */
+    border-radius: 10px; /* Закругление углов */
+    flex: 1.5; /* Занимает половину ширины модального окна */
+    z-index: 3;
+    display: flex;
+    width: 100%;
+}
+
+
+.image-placeholder {
+    background-color: #6a00e4a1; /* Цвет фона */
+    color: rgb(209, 209, 209);
+    border-radius: 20px; /* Закругление углов */
+    margin: 10px; /* Отступы */
+    flex: 1;
+    flex-direction: column; /* Располагаем элементы по вертикали */
+    align-items: center; /* Центрируем элементы по горизонтали */
+    justify-content: center; /* Центрируем элементы по вертикали */
+    text-align: center; /* Центрируем текст внутри элементов */
+    padding: 20px;
+    padding-top: 80px;
+    box-sizing: border-box;
+    font-size: 35px;
+}
+
+.image-placeholder img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Масштабируем изображение с сохранением пропорций */
+    object-fit: cover; /* Масштабируем изображение с обрезкой */
+    border-radius: inherit; /* Наследуем закругленные углы от контейнера */
+}
+
+.image-results {
+    color: rgb(209, 209, 209);
+    margin: 10px; /* Отступы */
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.Fakeornot{
+    background-color: #6c009ea1; /* Цвет фона */
+    border-radius: 20px; /* Закругление углов */
+    margin-bottom: 10px; /* Отступы */
+    flex: 1;
+}
+
+.ScalesResults{
+    background-color: #6c009ea1; /* Цвет фона */
+    border-radius: 20px; /* Закругление углов */
+    margin-top: 10px; /* Отступы */
+    flex: 1;
+    display: flex;
+    justify-content: space-between; /* Разделяем прогресс-бары по сторонам */
+    align-items: center; /* Центровка по высоте */
+    padding: 10px;
+    width: 100%;
+}
+
+.progress-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px; /* Отступ между прогресс-барами */
+}
+
+.progress-bar {
+    position: relative;
+    width: 100%;
+    height: 20px;
+    background: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    
+}
+
+.progress-bar-fill {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    transition: width 0.5s ease-in-out;
+}
+
+.progress-bar-fill.ai {
+    background: #ff4c4c; /* Красноватый цвет для AI generated */
+}
+
+.progress-bar-fill.human {
+    background: #4caf50; /* Зеленоватый цвет для Human created */
+}
+
+.progress-label {
+    font-size: 18px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.UnFake{
+    font-size: 50px;
+    color: rgb(0, 228, 179);
+    text-shadow:
+    0 0 5px #000000,
+    0 0 10px #000000,
+    0 0 20px #000000,
+    0 0 40px #0ff,
+    0 0 80px #0ff,
+    0 0 90px #0ff,
+    0 0 100px #0ff,
+    0 0 150px #0ff;
+    animation: fade-in 2s forwards;
+    flex-direction: column; /* Располагаем элементы по вертикали */
+    align-items: center; /* Центрируем элементы по горизонтали */
+    justify-content: center; /* Центрируем элементы по вертикали */
+    text-align: center; /* Центрируем текст внутри элементов */
+    box-sizing: border-box;
+}
+
+.Fake,
+.UnFake {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Убедимся, что высота элемента занимает всю доступную высоту */
+    text-align: center; /* Центрируем текст */
+}
+
+.Fake p {
+    font-size: 50px;
+    
+    color: rgb(228, 0, 0);
+    text-shadow:
+    0 0 5px #000000,
+    0 0 10px #000000,
+    0 0 20px #000000,
+    0 0 40px rgb(255, 0, 0),
+    0 0 80px rgb(255, 0, 0),
+    0 0 90px rgb(255, 0, 0),
+    0 0 100px rgb(255, 0, 0),
+    0 0 150px rgb(255, 0, 0);
+    animation: neon-flicker 1.5s infinite alternate, fade-in 2s forwards;
+    flex-direction: column; /* Располагаем элементы по вертикали */
+    align-items: center; /* Центрируем элементы по горизонтали */
+    justify-content: center; /* Центрируем элементы по вертикали */
+    text-align: center; /* Центрируем текст внутри элементов */
+    box-sizing: border-box;
+}
+
+  @keyframes neon-flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+      text-shadow: 0 0 5px #f00, 0 0 10px #f00, 0 0 20px #f00, 0 0 40px #f00, 0 0 80px #f00;
+      opacity: 1;
+    }
+    20%, 24%, 55% {
+      text-shadow: none;
+      opacity: 0.7;
+    }
+  }
+
+  @keyframes Unfakeneon-flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+      text-shadow: 
+      0 0 40px #0ff,
+      0 0 80px #0ff,
+      0 0 90px #0ff,
+      0 0 100px #0ff,
+      0 0 150px #0ff;
+      opacity: 1;
+    }
+    20%, 24%, 55% {
+      text-shadow: none;
+      opacity: 0.7;
+    }
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+.hidden {
+    display: none;
+}
+
+
